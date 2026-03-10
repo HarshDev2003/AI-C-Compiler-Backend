@@ -1,11 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 const { randomUUID } = require('crypto');
+const os = require('os');
 
-const dirCodes = path.join(__dirname, '..', 'codes');
-if (!fs.existsSync(dirCodes)) {
-    fs.mkdirSync(dirCodes, { recursive: true });
-}
+const dirCodes = os.tmpdir();
 
 const generateFile = async (code) => {
     const fileId = randomUUID();

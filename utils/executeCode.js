@@ -1,11 +1,9 @@
 const { exec } = require('child_process');
 const fs = require('fs');
 const path = require('path');
+const os = require('os');
 
-const outputPath = path.join(__dirname, '..', 'outputs');
-if (!fs.existsSync(outputPath)) {
-    fs.mkdirSync(outputPath, { recursive: true });
-}
+const outputPath = os.tmpdir();
 
 const executeCode = (filePath, input) => {
     const fileId = path.basename(filePath).split('.')[0];
