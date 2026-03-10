@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { v4: uuid } = require('uuid');
+const { randomUUID } = require('crypto');
 
 const dirCodes = path.join(__dirname, '..', 'codes');
 if (!fs.existsSync(dirCodes)) {
@@ -8,7 +8,7 @@ if (!fs.existsSync(dirCodes)) {
 }
 
 const generateFile = async (code) => {
-    const fileId = uuid();
+    const fileId = randomUUID();
     const filename = `${fileId}.c`;
     const filePath = path.join(dirCodes, filename);
 
